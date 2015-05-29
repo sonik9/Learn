@@ -33,8 +33,10 @@ public class JdbcSample {
         System.out.println("Listing all users without user1:");
         listAllUsers();*/
 
-        BlgUserDao blgUserDao = ctx.getBean("blgUserDao", BlgUserDao.class);
-        //System.out.println("Logins : " + blgUserDao.findLoginbyId(2));
+        blgUserDao = ctx.getBean("blgUserDao", BlgUserDao.class);
+        System.out.println("Logins : " + blgUserDao.findLoginbyId(2));
+        //List<BlgUser> blgUsers=blgUserDao.findAll();
+        //listAllUsers(blgUsers);
         listAllUsers();
 
     }

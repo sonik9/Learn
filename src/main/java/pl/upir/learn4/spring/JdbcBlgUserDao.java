@@ -38,7 +38,8 @@ public class JdbcBlgUserDao implements BlgUserDao, InitializingBean {
 
     private SelectAllUsers selectAllUsers;
 
-    @Resource(name="dataSource")
+    //@Resource(name="dataSource")
+    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -46,7 +47,12 @@ public class JdbcBlgUserDao implements BlgUserDao, InitializingBean {
        /* MySQLErrorCodesTranslator errorCodesTranslator= new MySQLErrorCodesTranslator();
         errorCodesTranslator.setDataSource(dataSource);
         jdbcTemplate.setExceptionTranslator(errorCodesTranslator);*/
+        selectAllUsers = new SelectAllUsers(dataSource);
 
+    }
+
+    public DataSource getDataSource(){
+        return dataSource;
     }
 
     public void afterPropertiesSet() throws Exception{
